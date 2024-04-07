@@ -1,11 +1,10 @@
-import CredentialDto from './CredentialDto';
-
 export interface userDto {
     name: string;
     email: string;
-    birthdate: string;
+    birthdate: Date;
     nDni: number;
-    crendentialsId: CredentialDto;
+    username: string;
+    password: string;
 }
 
 export default userDto; 

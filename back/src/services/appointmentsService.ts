@@ -1,68 +1,52 @@
-import IAppointment from "../interfaces/IAppointment";  
+import { Appointment } from "../entities/Appointment";  
+import { AppointmentModel, UserModel } from "../config/data-source";
 import Status from "../enum/enumStatus";
 import AppointmentDto from "../dto/AppoinmentDto";
 
-
-const appointments: IAppointment[] = [
-    {
-        id: 1,
-        date: '2022-01-01',
-        time: '09:00',
-        userId: 1,
-        status: Status.PENDING
-    },
-    {
-        id: 2,
-        date: '2022-01-01',
-        time: '10:00',
-        userId: 2,
-        status: Status.PENDING
-    },
-    {
-        id: 3,
-        date: '2022-01-01',
-        time: '11:00',
-        userId: 3,
-        status: Status.PENDING   
-    }
-];
-
-let id: number = 4;
-
-export const getAppointmentsService = async (): Promise<IAppointment[]> => {
-    return appointments;
+export const getAppointmentsService = async (): Promise<Appointment[]> => {
+    const allAppointments = await AppointmentModel.find({
+        relations: {
+            user: true
+        }
+    
+    });
+    return allAppointments;
 };
 
-export const getAppointmentByIdService = async (id: number): Promise<IAppointment | undefined>  => {
-    return appointments.find(appointment => appointment.id === id);
+export const getAppointmentByIdService = async (id: number): Promise<Appointment | undefined>  => {
+    const appointmentById = await AppointmentModel.findOneBy({id});
+    if (!appointmentById) {
+        return undefined;
+    }
+    return appointmentById;
 };  
 
-export const createAppointmentService = async (appointment: AppointmentDto): Promise<IAppointment | null> => {
-    
-    if(!appointment.userId){
-        console.log('User ID is required');
-        
+export const createAppointmentService = async (appointment: AppointmentDto): Promise<Appointment | null> => {
+    const user = await UserModel.findOneBy({
+        id: appointment.userId
+    });
+
+    if (!user) {
         return null;
     }
 
-    const newId = appointments.length > 0 ? appointments[appointments.length - 1].id + 1 : 1;
+    const newAppointment = await AppointmentModel.create(appointment);
+    await AppointmentModel.save(newAppointment);
 
-    const newAppointment: IAppointment = {
-        id: newId,
-        date: appointment.date,
-        time: appointment.time,
-        userId: appointment.userId,
-        status: Status.PENDING
-    };
-    appointments.push(newAppointment);
+    if (user) {
+        newAppointment.user = user;
+        AppointmentModel.save(newAppointment);
+    }
+
     return newAppointment;
 };
 
-export const cancelAppointmentService = async (id: number): Promise<IAppointment | undefined> => {
-    const appointment = appointments.findIndex(appointment => appointment.id === id);
-    if (appointment !== -1) {
-        appointments[appointment].status = Status.CANCELLED;
-        return appointments[appointment];
+export const cancelAppointmentService = async (id: number): Promise<Appointment | undefined> => {
+    const appointmentCancel = await AppointmentModel.findOneBy({id});
+    if(appointmentCancel){
+        appointmentCancel.status = Status.CANCELLED;
+        await AppointmentModel.save(appointmentCancel);
+        return appointmentCancel;
     }
     return undefined;
 };

@@ -1,10 +1,11 @@
 import { Appointment } from "../entities/Appointment";  
-import { AppointmentModel, UserModel } from "../config/data-source";
+import AppointmentRepository from "../repositories/AppointmentRepository";
+import UserRepository from "../repositories/UserRepository";
 import Status from "../enum/enumStatus";
 import AppointmentDto from "../dto/AppoinmentDto";
 
 export const getAppointmentsService = async (): Promise<Appointment[]> => {
-    const allAppointments = await AppointmentModel.find({
+    const allAppointments = await AppointmentRepository.find({
         relations: {
             user: true
         }
@@ -14,15 +15,16 @@ export const getAppointmentsService = async (): Promise<Appointment[]> => {
 };
 
 export const getAppointmentByIdService = async (id: number): Promise<Appointment | undefined>  => {
-    const appointmentById = await AppointmentModel.findOneBy({id});
-    if (!appointmentById) {
-        return undefined;
+    const appointmentById = await AppointmentRepository.findOneBy({id});
+    if (appointmentById) {
+        return appointmentById;
+    } else {
+        throw Error('Appointment not found');
     }
-    return appointmentById;
 };  
 
 export const createAppointmentService = async (appointment: AppointmentDto): Promise<Appointment | null> => {
-    const user = await UserModel.findOneBy({
+    const user = await UserRepository.findOneBy({
         id: appointment.userId
     });
 
@@ -30,23 +32,36 @@ export const createAppointmentService = async (appointment: AppointmentDto): Pro
         return null;
     }
 
-    const newAppointment = await AppointmentModel.create(appointment);
-    await AppointmentModel.save(newAppointment);
+    const newAppointment = await AppointmentRepository.create({
+        date: appointment.date,
+        time: appointment.time,
+        status: Status.ACCEPTED,
+        user: user
+    });
+    await AppointmentRepository.save(newAppointment);
 
     if (user) {
         newAppointment.user = user;
-        AppointmentModel.save(newAppointment);
+        AppointmentRepository.save(newAppointment);
     }
 
     return newAppointment;
 };
 
 export const cancelAppointmentService = async (id: number): Promise<Appointment | undefined> => {
-    const appointmentCancel = await AppointmentModel.findOneBy({id});
-    if(appointmentCancel){
-        appointmentCancel.status = Status.CANCELLED;
-        await AppointmentModel.save(appointmentCancel);
-        return appointmentCancel;
+    try {
+        const appointmentCancel = await AppointmentRepository.findOneBy({id});
+        if(appointmentCancel){
+            appointmentCancel.status = Status.CANCELLED;
+            await AppointmentRepository.save(appointmentCancel);
+            return appointmentCancel;
+        } else {
+            throw Error('Appointment not found');
+        }
+    
+    } catch (error) {
+        throw Error('Appointment not found');
     }
+
     return undefined;
 };

@@ -30,16 +30,3 @@ export class User {
     appointments: Appointment[];
 
 }
-
-
-
-
-// {
-//     name: string;
-//     email: string;
-//     birthdate: Date;
-//     nDni: number;
-//     //crendentialsId: CredentialDto;
-//     username: string;
-//     password: string;
-// }

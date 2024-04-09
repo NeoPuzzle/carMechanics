@@ -1,11 +1,11 @@
 import CredentialDto from "../dto/CredentialDto";
-import { CredentialModel, UserModel } from "../config/data-source";
+import CredentialRepository from "../repositories/CredentialRepository";
 import { Credential } from "../entities/Credential";
 
 
 export const createCredentialService = async (userData: CredentialDto): Promise<Credential> => {
-    const newCredential = await CredentialModel.create(userData);
-    await CredentialModel.save(newCredential);
+    const newCredential = await CredentialRepository.create(userData);
+    await CredentialRepository.save(newCredential);
 //     const user = await UserModel.findOneBy({
 //         id: newCredential.id
 //     });
@@ -19,11 +19,8 @@ export const createCredentialService = async (userData: CredentialDto): Promise<
 }
 
 
-export const validateCredentialService = async (userData: CredentialDto): Promise<number | undefined> => {
-    const credentials = await CredentialModel.findOneBy({username: userData.username, password: userData.password});
-    if (credentials) {
-        return credentials.id;
-    }
-    return undefined;
+export const validateCredentialService = async (userData: CredentialDto): Promise<Credential | null> => {
+    const credentials = await CredentialRepository.findOneBy({username: userData.username, password: userData.password});
+    return credentials;
 }
         

@@ -1,4 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { OneToOne, JoinColumn } from "typeorm";
+import { User } from "./User";
 
 @Entity({
     name: 'credentials'

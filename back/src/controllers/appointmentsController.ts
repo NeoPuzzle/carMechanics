@@ -8,7 +8,7 @@ export const getAppointmentsController = async (req: Request, res: Response) => 
         const appointments: Appointment[] = await getAppointmentsService();
         res.status(200).json(appointments);
     } catch (error) {
-        res.status(500).json({ message: 'Internal server error'});
+        res.status(404).json({ message: 'Appointments not found'});
     }
 };
 
@@ -18,30 +18,21 @@ export const getAppointmentByIdController = async (req: Request, res: Response) 
         const appointment: Appointment | undefined = await getAppointmentByIdService(id);
         if (appointment) {
         res.status(200).json(appointment);
-        } else {
-            res.status(404).json({ message: 'Appointment not found'});
-        }
+        } 
     } catch (error) {
-        res.status(500).json({ message: 'Internal server error'});
+        res.status(404).json({ message: 'Appointment not found'});
     }
 };  
 
 export const createAppointmentController = async (req: Request, res: Response) => {
     try {
-        const appointmentDto: AppointmentDto = req.body;
-        const newAppointment: Appointment | null = await createAppointmentService({
-            date: appointmentDto.date,
-            time: appointmentDto.time,
-            status: appointmentDto.status,
-            userId: appointmentDto.userId
-        });
+        const {date, time, userId}: AppointmentDto = req.body;
+        const newAppointment: Appointment | null = await createAppointmentService({date, time, userId});
         if (newAppointment) {
-            res.status(201).json(newAppointment);
-        } else {
-            res.status(400).json({ message: 'User ID valid is required'});
+            res.status(201).send(newAppointment);
         }
     } catch (error) {
-        res.status(500).json({ message: 'Internal server error'});
+        res.status(400).json({ message: 'User ID valid is required'});
     }
 };
 
@@ -51,10 +42,8 @@ export const cancelAppointmentController = async (req: Request, res: Response) =
         const appointment: Appointment | undefined = await cancelAppointmentService(id);
         if (appointment) {
             res.status(200).json(appointment);
-        } else {
-            res.status(404).json({ message: 'Appointment not found'});
         }
     } catch (error) {
-        res.status(500).json({ message: 'Internal server error'});
+        res.status(404).json({ message: 'Appointment not found'});
     }
 };

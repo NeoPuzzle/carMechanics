@@ -1,0 +1,47 @@
+/* .navbar {
+    background-color: #333;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .navList {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  .navItem {
+    margin-right: 1rem;
+  }
+  
+  .navItem a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .businessName {
+    color: white;
+    font-size: 1.5rem;
+  }
+   */
+
+
+   .toolbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(46, 44, 44);
+  }
+  
+  .iconContainer {
+    display: flex;
+  }
+  
+  .businessName {
+    color: white;
+  }
+
+  .iconButton {
+    padding: 20px;
+  }

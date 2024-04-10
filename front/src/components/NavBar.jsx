@@ -1,5 +1,10 @@
-import { AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
-import { ShoppingCart, Person, Home } from '@material-ui/icons';
+import Toolbar from '@mui/material/Toolbar';
+import AppBar from '@mui/material/AppBar';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
+import HomeIcon from '@mui/icons-material/Home';
+import PersonIcon from '@mui/icons-material/Person';
 import styles from '../styles/NavBar.module.css';
 
 const NavBar = () => {
@@ -9,13 +14,13 @@ const NavBar = () => {
       <Typography variant="h6" className={styles.businessName}>JACKATOU MEC.</Typography>
         <div className={styles.iconContainer}>
           <IconButton edge="start" color="inherit" aria-label="home">
-            <Home />
+            <HomeIcon />
           </IconButton>
           <IconButton edge="start" color="inherit" aria-label="cart">
-            <ShoppingCart />
+            <LocalGroceryStoreIcon />
           </IconButton>
           <IconButton edge="start" color="inherit" aria-label="user">
-            <Person />
+            <PersonIcon />
           </IconButton>
         </div>
         

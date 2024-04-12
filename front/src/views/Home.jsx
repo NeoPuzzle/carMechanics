@@ -1,5 +1,5 @@
-import ImageWelcome from "../components/ImageWelcome";
-import HomePresentation from "../components/HomePresentation";
+import ImageWelcome from "../components/Home/ImageWelcome";
+import HomePresentation from "../components/Home/HomePresentation";
 const Home = () => {
     return (
         <>

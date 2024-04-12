@@ -1,5 +1,6 @@
-import NavBar from "./components/NavBar"
-import Home from "./views/Home"
+import Footer from "./components/App/Footer"
+import NavBar from "./components/App/NavBar"
+// import Home from "./views/Home"
 import MisTurnos from "./views/MisTurnos"
 
 function App() {
@@ -7,8 +8,9 @@ function App() {
   return (
     <>
       <NavBar/>
-      <Home />
+      {/* <Home /> */}
       <MisTurnos />
+      <Footer/>
     </>
   )
 }

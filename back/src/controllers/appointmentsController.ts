@@ -26,8 +26,8 @@ export const getAppointmentByIdController = async (req: Request, res: Response) 
 
 export const createAppointmentController = async (req: Request, res: Response) => {
     try {
-        const {date, time, userId}: AppointmentDto = req.body;
-        const newAppointment: Appointment | null = await createAppointmentService({date, time, userId});
+        const {date, time,description, userId}: AppointmentDto = req.body;
+        const newAppointment: Appointment | null = await createAppointmentService({date, time, description, userId});
         if (newAppointment) {
             res.status(201).send(newAppointment);
         }

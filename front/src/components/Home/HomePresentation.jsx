@@ -1,7 +1,7 @@
 import { useState } from "react"
-import myPresentation from "../helpers/myPresentation"
+import myPresentation from "../../helpers/myPresentation"
 import Presentation from "./Presentation"
-import styles from '../styles/HomePresentation.module.css';
+import styles from '../../styles/Home/HomePresentation.module.css';
 
 const HomePresentation = () => {
 

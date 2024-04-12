@@ -1,5 +1,5 @@
-import styles from '../styles/ImageWelcome.module.css';
-import imgWelcome from '../../src/assets/imagen-portada.jpg';
+import styles from '../../styles/Home/ImageWelcome.module.css';
+import imgWelcome from '../../assets/imagen-portada.jpg';
 
 const ImageWelcome = () => {
 

@@ -28,14 +28,13 @@ export const createAppointmentService = async (appointment: AppointmentDto): Pro
         id: appointment.userId
     });
 
-    if (!user) {
-        return null;
-    }
+    if (!user) throw Error('User not found');
 
     const newAppointment = await AppointmentRepository.create({
         date: appointment.date,
         time: appointment.time,
-        status: Status.ACCEPTED,
+        status: Status.PENDING,
+        description: appointment.description,
         user: user
     });
     await AppointmentRepository.save(newAppointment);

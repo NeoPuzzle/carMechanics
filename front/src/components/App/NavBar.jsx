@@ -5,7 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import HomeIcon from '@mui/icons-material/Home';
 import PersonIcon from '@mui/icons-material/Person';
-import styles from '../styles/NavBar.module.css';
+import styles from '../../styles/App/NavBar.module.css';
 
 const NavBar = () => {
   return (

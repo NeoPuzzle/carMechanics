@@ -8,13 +8,15 @@ const MisTurnos = () => {
     const[turnos, setTurnos] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:4040/appointments/")
-        .then((response) => {
+        const fetchData = async () => {
+            try {
+            const response = await axios.get("http://localhost:4040/appointments/")
             setTurnos(response.data);
-        })
-        .catch((error) => {
+            } catch(error){
             throw Error("Hubo un error al cargar datos", error);
-        })
+            }
+        }
+        fetchData();
     }, []);
 
 
@@ -22,15 +24,19 @@ const MisTurnos = () => {
         <>
         <h1>Mis turnos</h1>
         <div>
-            {turnos.map(({id, date, time, description, status}) => {
-                return <Turn 
-                key={id}
-                date={date}
-                time={time}
-                description={description}
-                status={status}
-                setTurnos={setTurnos} />
-            })}
+            {!turnos.length ? (<p>No hay turnos</p>
+            ) : (
+                turnos?.map(({id, date, time, description, status}) => {
+                    return <Turn 
+                    key={id}
+                    date={date}
+                    time={time}
+                    description={description}
+                    status={status}
+                    setTurnos={setTurnos} />
+                })
+            )}
+            
         </div>
         </>
     )

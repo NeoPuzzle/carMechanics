@@ -4,7 +4,7 @@
     padding: 20px;
     margin: 10px;
     width: 350px;
-    height: 420px;
+    height: auto;
 }
 
 
@@ -13,13 +13,11 @@
     width: 330px;
     height: 330px;
     border-radius: 50%;
-    background-color: white;
 }
 
 .text{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    background-color: white;
+    text-align: center;
 }

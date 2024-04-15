@@ -8,27 +8,29 @@ import IconButton from '@mui/material/IconButton';
 
 const Footer = () => {
     return (
+        <>
         <footer className={styles.container}>
         <div >
         <IconButton edge="start" color="inherit" aria-label="facebook">
             <FacebookIcon className={styles.icon}/>
         </IconButton>
-        <IconButton edge="start" color="inherit" aria-label="facebook">
+        <IconButton edge="start" color="inherit" aria-label="instagram">
             <InstagramIcon className={styles.icon}/>
         </IconButton>
-        <IconButton edge="start" color="inherit" aria-label="facebook">
+        <IconButton edge="start" color="inherit" aria-label="youtube">
             <YouTubeIcon className={styles.icon}/>
         </IconButton>
-        <IconButton edge="start" color="inherit" aria-label="facebook">
+        <IconButton edge="start" color="inherit" aria-label="whatsapp">
             <WhatsAppIcon className={styles.icon}/>
         </IconButton>
-        <IconButton edge="start" color="inherit" aria-label="facebook">
+        <IconButton edge="start" color="inherit" aria-label="linkedin">
             <LinkedInIcon className={styles.icon}/>
         </IconButton>
         </div>
         <p className={styles.copyrigth}>COPYRIGHT © 2024 JACKATOU MEC. - TODOS LOS DERECHOS RESERVADOS.</p>
         <p className={styles.derechos}>POLÍTICA DE PRIVACIDAD</p>
         </footer>
+        </>
     );
 }
 

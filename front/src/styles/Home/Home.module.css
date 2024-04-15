@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.containerchild{
+    width: 50%;
+}
+
+@media only screen and (max-width:768px){
+  .container{
+      flex: 25%;
+      flex-direction: column;
+
+  }
+}
+

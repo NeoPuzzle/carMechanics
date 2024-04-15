@@ -4,7 +4,7 @@ export const validateLogin = (input) => {
     const passwordRegex =/.+/;
 
     if(!usernameRegex.test(input.username)) {
-        errors.email = 'Please enter a username';
+        errors.username = 'Please enter a username';
     }
 
     if(!passwordRegex.test(input.password)) {

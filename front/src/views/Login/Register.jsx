@@ -1,25 +1,28 @@
 import {Form, Formik,Field, ErrorMessage} from "formik";
+import { useState } from "react";
 import { validateRegister } from "../../helpers/validateRegister";
 import styles from "../../styles/Login/Register.module.css"
 import axios from "axios";
 
 
 const Register = () => {
+
+    const [form, setForm] = useState({
+        name: "",
+        email: "",
+        birthdate: "",
+        nDni: "",
+        username: "",
+        password: ""
+    });
     return (
         <Formik
-            initialValues={{
-                name: "",
-                email: "",
-                birthdate: "",
-                nDni: "",
-                username: "",
-                password: ""
-            }}
-            validateRegister={validateRegister}
-            onSubmit={(values,{setSubmitting, resetForm }) => {
+            initialValues={form}
+            validate={validateRegister}
+            onSubmit={(form,{setSubmitting, resetForm }) => {
                 const fetchRegisterData = async () => {
                     try {
-                        const response = await axios.post("http://localhost:4040/users/register", values)
+                        const response = await axios.post("http://localhost:4040/users/register", form)
                         resetForm();
                         alert("Usuario registrado con éxito");
                         return response.data;

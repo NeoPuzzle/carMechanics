@@ -1,0 +1,15 @@
+.container{
+    border: none;
+    border-radius: 40%;
+    right: 1%;
+    bottom: 20%;
+    position: fixed;
+    background-color: rgb(141, 83, 42);
+}
+
+.icon{
+    color: white;
+    font-size: 2em;
+    padding: 0.5em;
+    width: 50px;
+}

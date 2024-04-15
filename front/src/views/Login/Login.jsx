@@ -1,25 +1,26 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { validateLogin } from "../../helpers/validateLogin";
+import { useState } from "react";
 import axios from "axios";
 import styles from "../../styles/Login/Register.module.css";
-//import { Link } from "react-dom";
 
-const Login = ({ onLogin }) => {
+const Login = () => {
+
+    const [form, setForm] = useState({
+        username: "",
+        password: ""
+    });
 
     return (
         <Formik
-            initialValues={{
-                username: "",
-                password: ""
-            }}
-            validateLogin={validateLogin}
-            onSubmit={(values,{setSubmitting, resetForm }) => {
+            initialValues={form}
+            validate={validateLogin}
+            onSubmit={(form,{setSubmitting, resetForm }) => {
                 const fetchLoginData = async () => {
                     try {
-                        const response = await axios.post("http://localhost:4040/users/login", values)
+                        const response = await axios.post("http://localhost:4040/users/login", form)
                         resetForm();
                         alert("Usuario logueado con éxito");
-                        onLogin();
                         return response.data;
                     } catch(error){
                         alert("Datos incorrectos");
@@ -46,7 +47,7 @@ const Login = ({ onLogin }) => {
                     <ErrorMessage name="password" component="div" style={{color: 'red'}}/>
                 </div>
                 <button type='submit' className={styles.formButton} disabled={!isValid || isSubmitting}>Login</button>
-                <p>¿No tienes una cuenta? Registrate Aqui</p>
+                <p>¿No tienes una cuenta? <a href="/front/src/views/Login/Register.jsx">Registrate Aqui</a></p>
             </Form>
             )}
 

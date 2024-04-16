@@ -1,10 +1,12 @@
 import Footer from "./components/App/Footer"
 import NavBar from "./components/App/NavBar"
-// import Login from "./views/Login/Login"
+import { Routes, Route } from "react-router-dom"
 import "./App.css"
-// import Register from "./views/Login/Register"
+import Register from "./views/Login/Register"
 import Home from "./views/Home"
-// import MisTurnos from "./views/MisTurnos"
+import Login from "./views/Login/Login"
+import MisTurnos from "./views/Turnos/MisTurnos"
+// import NewTurn from "./views/Turnos/NewTurn"
 
 function App() {
   
@@ -14,10 +16,13 @@ function App() {
     <div className="container">
     <NavBar/>
     <div className="content">
-      <Home />
-      {/* <Login /> */}
-      {/* <Register /> */}
-      {/* <MisTurnos /> */}
+    <Routes>
+      {/* <Route path="/" element={<NewTurn />} /> */}
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/appointments" element={<MisTurnos />} />
+    </Routes>
     </div>
       <Footer className="footer" />
     </div>

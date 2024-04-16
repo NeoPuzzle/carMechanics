@@ -8,7 +8,6 @@ import IconButton from '@mui/material/IconButton';
 
 const Footer = () => {
     return (
-        <>
         <footer className={styles.container}>
         <div >
         <IconButton edge="start" color="inherit" aria-label="facebook">
@@ -30,7 +29,6 @@ const Footer = () => {
         <p className={styles.copyrigth}>COPYRIGHT © 2024 JACKATOU MEC. - TODOS LOS DERECHOS RESERVADOS.</p>
         <p className={styles.derechos}>POLÍTICA DE PRIVACIDAD</p>
         </footer>
-        </>
     );
 }
 

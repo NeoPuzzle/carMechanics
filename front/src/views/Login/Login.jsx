@@ -3,6 +3,8 @@ import { validateLogin } from "../../helpers/validateLogin";
 import { useState } from "react";
 import axios from "axios";
 import styles from "../../styles/Login/Register.module.css";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
 
@@ -11,8 +13,11 @@ const Login = () => {
         password: ""
     });
 
+    const navigate = useNavigate();
+
     return (
-        <Formik
+        <div className={styles.back}>
+            <Formik
             initialValues={form}
             validate={validateLogin}
             onSubmit={(form,{setSubmitting, resetForm }) => {
@@ -20,7 +25,7 @@ const Login = () => {
                     try {
                         const response = await axios.post("http://localhost:4040/users/login", form)
                         resetForm();
-                        alert("Usuario logueado con éxito");
+                        navigate("/appointments");
                         return response.data;
                     } catch(error){
                         alert("Datos incorrectos");
@@ -47,11 +52,12 @@ const Login = () => {
                     <ErrorMessage name="password" component="div" style={{color: 'red'}}/>
                 </div>
                 <button type='submit' className={styles.formButton} disabled={!isValid || isSubmitting}>Login</button>
-                <p>¿No tienes una cuenta? <a href="/front/src/views/Login/Register.jsx">Registrate Aqui</a></p>
+                <p>¿No tienes una cuenta? <Link to={"/register"} style={{ textDecoration: 'none', color: 'inherit' }}>Registrate Aqui</Link></p>
             </Form>
             )}
 
         </Formik>
+        </div>
     );
 };
 

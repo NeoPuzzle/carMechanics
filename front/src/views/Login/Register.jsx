@@ -3,6 +3,7 @@ import { useState } from "react";
 import { validateRegister } from "../../helpers/validateRegister";
 import styles from "../../styles/Login/Register.module.css"
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 
 const Register = () => {
@@ -16,7 +17,8 @@ const Register = () => {
         password: ""
     });
     return (
-        <Formik
+        <div className={styles.back}>
+            <Formik
             initialValues={form}
             validate={validateRegister}
             onSubmit={(form,{setSubmitting, resetForm }) => {
@@ -71,11 +73,14 @@ const Register = () => {
                     <ErrorMessage name="password" component="div" style={{color: 'red'}}/>
                 </div>
                 <button type='submit'  className={styles.formButton} disabled={!isValid || isSubmitting} >Submit</button>
+                <p><Link to={"/login"} style={{ textDecoration: 'none', color: 'inherit' }}>Ir a Login</Link></p>
                 
             </Form>
             )}
 
         </Formik>
+        </div>
+        
     );
     };
 

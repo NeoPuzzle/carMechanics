@@ -1,6 +1,6 @@
 // import turns from "../helpers/miTurns";
 import { useState, useEffect } from "react";
-import Turn from "../components/Turn/Turn";
+import Turn from "../../components/Turn/Turn";
 import axios from "axios";
 
 const MisTurnos = () => {

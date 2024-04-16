@@ -1,7 +1,7 @@
 .formContainer {
     background-color: rgb(141, 83, 42);
     width: 300px;
-    margin: 0 auto;
+    margin: 10% auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -36,4 +36,9 @@
 
 .formButton:hover {
     background-color: rgb(106, 77, 56);
+}
+
+.back{
+    padding: 2%;
+    background-color: gray;
 }

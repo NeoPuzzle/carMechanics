@@ -17,7 +17,6 @@ function App() {
     <NavBar/>
     <div className="content">
     <Routes>
-      {/* <Route path="/" element={<NewTurn />} /> */}
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />

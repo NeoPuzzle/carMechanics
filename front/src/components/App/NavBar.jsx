@@ -2,6 +2,7 @@ import Toolbar from '@mui/material/Toolbar';
 import AppBar from '@mui/material/AppBar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
+import TurnedInIcon from '@mui/icons-material/TurnedIn';
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import HomeIcon from '@mui/icons-material/Home';
 import PersonIcon from '@mui/icons-material/Person';
@@ -43,6 +44,17 @@ const NavBar = () => {
           }}>
             <IconButton edge="start" color="inherit" aria-label="user">
               <PersonIcon />
+            </IconButton>
+          </NavLink>
+
+        <NavLink to="/appointments"
+          style={({ isActive, isPending}) => {
+            return {
+              color: isActive ? "grey" : isPending ? "blue" : "white",
+            };
+          }}>
+            <IconButton edge="start" color="inherit" aria-label="user">
+              <TurnedInIcon />
             </IconButton>
           </NavLink>
             

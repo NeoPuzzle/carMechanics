@@ -2,8 +2,13 @@
 import { useState, useEffect } from "react";
 import Turn from "../../components/Turn/Turn";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser } from "../../redux/reducer";
 
 const MisTurnos = () => {
+
+    const dispatch = useDispatch();
+    const user = useSelector(selectUser)
 
     const[turnos, setTurnos] = useState([]);
 

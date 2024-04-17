@@ -5,8 +5,12 @@ import axios from "axios";
 import styles from "../../styles/Login/Register.module.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import  { setUser} from "../../redux/reducer"
 
 const Login = () => {
+
+    const dispatch = useDispatch();
 
     const [form, setForm] = useState({
         username: "",
@@ -24,6 +28,7 @@ const Login = () => {
                 const fetchLoginData = async () => {
                     try {
                         const response = await axios.post("http://localhost:4040/users/login", form)
+                        dispatch(setUser(response.data));
                         resetForm();
                         navigate("/appointments");
                         return response.data;

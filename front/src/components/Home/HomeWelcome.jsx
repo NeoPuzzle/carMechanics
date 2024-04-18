@@ -19,7 +19,7 @@ const ImageWelcome = () => {
         <div className={styles.container}>
         <img className={styles.image} src={imgWelcome} />
         <h3 className={styles.title}>Bienvenido a Jackatou Mec.</h3>
-        <button onClick={handleSubmit} className={styles.boton}>- RESERVA TU CITA EN LINEA -</button>
+        <button onClick={handleSubmit} className={styles.boton}>- RESERVA TU TURNO -</button>
         </div>
     );
 };

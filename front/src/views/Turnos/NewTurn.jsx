@@ -21,27 +21,6 @@ const NewTurn = () => {
 
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     if(form.date && !isWeekDay(form.date)){
-    //         setErrors({
-    //             ...errors,
-    //             date: ""
-    //         })
-    //     }
-    //     if(form.time && !isValidTime(form.time)){
-    //         setErrors({
-    //             ...errors,
-    //             time: ""
-    //         })
-    //     } else {
-    //         setErrors({
-    //             ...errors,
-    //             user: user.id
-    //         })
-    //     }
-    // }, [form])
-
-
     return (
         <>
         <div className={styles.container} >

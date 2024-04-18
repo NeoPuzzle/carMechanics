@@ -2,27 +2,32 @@ import {createSlice } from '@reduxjs/toolkit';
 
 
 const initialState = {
-    user: "",
+    userActive: {},
     userAppointments: [],
 };
 
-const userSlice = createSlice({
-    name: 'user',
-    initialState,
+export const userSlice = createSlice({
+    name: 'userData',
+    initialState: initialState,
     reducers: {
-        setUser(state, action) {
-            state.user = action.payload;
+        setUserActive: (state, action) => {
+            state.userActive = action.payload;
         },
         setUserAppointments: (state, action) => {
             state.userAppointments = action.payload;
         },
+        removerUserActive: (state) => {
+            state.userActive = {};
+        },
+        cancelAppointmentAction: (state, action) => {
+            state.userAppointments = state.userAppointments.map((appointment) => {
+                if(appointment.id === action.payload){
+                    return {...appointment, status: "CANCELLED"}
+                }
+                return appointment;
+            });
     },
+    }
 });
 
-
-export const { setUser, setUserAppointments } = userSlice.actions;
-
-export const selectUser = (state) => state.user.user;
-export const selectUserAppointments = (state) => state.user.userAppointments;
-
-export default userSlice;
+export const { setUserActive, setUserAppointments, removerUserActive, cancelAppointmentAction } = userSlice.actions;

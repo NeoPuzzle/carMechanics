@@ -1,10 +1,3 @@
-//GET /appointments => Obtener todos los turnos
-//GET /appointments/:id => Obtener un turno por id
-
-//POST /appointments/schedule => Crear un turno
-
-//PUT /appointments/cancel => Cancelar un turno
-
 import { Router } from "express";
 import { getAppointmentsController, getAppointmentByIdController, createAppointmentController, cancelAppointmentController } from "../controllers/appointmentsController";
 

@@ -26,8 +26,8 @@ export const getAppointmentByIdController = async (req: Request, res: Response) 
 
 export const createAppointmentController = async (req: Request, res: Response) => {
     try {
-        const {date, time,description, userId}: AppointmentDto = req.body;
-        const newAppointment: Appointment | null = await createAppointmentService({date, time, description, userId});
+        const {date, time,description, user}: AppointmentDto = req.body;
+        const newAppointment: Appointment | null = await createAppointmentService({date, time, description, user});
         if (newAppointment) {
             res.status(201).send(newAppointment);
         }
@@ -38,7 +38,7 @@ export const createAppointmentController = async (req: Request, res: Response) =
 
 export const cancelAppointmentController = async (req: Request, res: Response) => {
     try {
-        const id: number = parseInt(req.body.id);
+        const id: number = parseInt(req.params.id);
         const appointment: Appointment | undefined = await cancelAppointmentService(id);
         if (appointment) {
             res.status(200).json(appointment);

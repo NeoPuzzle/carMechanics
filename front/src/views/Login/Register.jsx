@@ -24,7 +24,7 @@ const Register = () => {
             onSubmit={(form,{setSubmitting, resetForm }) => {
                 const fetchRegisterData = async () => {
                     try {
-                        const response = await axios.post("http://localhost:4040/users/register", form)
+                        const response = await axios.post("http://localhost:3000/users/register", form)
                         resetForm();
                         alert("Usuario registrado con éxito");
                         return response.data;

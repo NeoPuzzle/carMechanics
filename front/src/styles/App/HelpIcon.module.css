@@ -1,15 +1,59 @@
 .container{
     border: none;
-    border-radius: 40%;
+    border-radius: 48%;
     right: 1%;
     bottom: 20%;
     position: fixed;
-    background-color: rgb(141, 83, 42);
 }
 
 .icon{
-    color: white;
-    font-size: 2em;
+    background-color: rgb(116, 59, 18);
+    border-radius: 49%;
     padding: 0.5em;
-    width: 50px;
+    width: 70px;
+}
+
+.containerHelp {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #882ea6;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.containerHelp h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.containerHelp p {
+    font-size: 1rem;
+    margin-bottom: 25px;
+}
+
+.containerHelp label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.containerHelp input, textarea {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.containerHelp button {
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.containerHelp button:hover {
+    background-color: #e0e0e0;
 }

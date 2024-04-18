@@ -15,3 +15,9 @@
   .iconButton {
     padding: 20px;
   }
+
+  .buttonLogin{
+    border: none;
+    background-color: transparent;
+    color: white;
+  }

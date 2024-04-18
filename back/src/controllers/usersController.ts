@@ -14,7 +14,7 @@ export const getUserController = async (req: Request, res: Response) => {
 
 export const getUserByIdController = async (req: Request, res: Response) => {
     try {
-        const id: number = parseInt(req.body.id);
+        const id: number = parseInt(req.params.id);
         const userById: User = await getUserByIdService(id);
         if (userById) {
             res.status(200).json(userById);

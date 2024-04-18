@@ -25,7 +25,7 @@ export const getAppointmentByIdService = async (id: number): Promise<Appointment
 
 export const createAppointmentService = async (appointment: AppointmentDto): Promise<Appointment | null> => {
     const user = await UserRepository.findOneBy({
-        id: appointment.userId
+        id: appointment.user
     });
 
     if (!user) throw Error('User not found');

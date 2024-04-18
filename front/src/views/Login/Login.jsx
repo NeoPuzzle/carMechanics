@@ -6,17 +6,18 @@ import styles from "../../styles/Login/Register.module.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import  { setUser} from "../../redux/reducer"
+import { setUserActive } from "../../redux/reducer";
 
 const Login = () => {
 
-    const dispatch = useDispatch();
+    
 
     const [form, setForm] = useState({
         username: "",
         password: ""
     });
 
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     return (
@@ -24,13 +25,12 @@ const Login = () => {
             <Formik
             initialValues={form}
             validate={validateLogin}
-            onSubmit={(form,{setSubmitting, resetForm }) => {
+            onSubmit={(form,{setSubmitting }) => {
                 const fetchLoginData = async () => {
                     try {
-                        const response = await axios.post("http://localhost:4040/users/login", form)
-                        dispatch(setUser(response.data));
-                        resetForm();
-                        navigate("/appointments");
+                        const response = await axios.post("http://localhost:3000/users/login", form)
+                        dispatch(setUserActive(response.data.user));
+                        navigate("/");
                         return response.data;
                     } catch(error){
                         alert("Datos incorrectos");

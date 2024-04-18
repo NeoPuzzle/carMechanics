@@ -1,9 +1,3 @@
-//GET /users => Obtener todos los usuarios
-//GET /users/:id => Obtener un usuario por id
-
-//POST /users/register  => Crear un usuario
-//POST /users/login => Login del usuario a la aplicación
-
 import { getUserController, getUserByIdController, createUserController, loginController } from "../controllers/usersController";
 import { Router } from "express";
 

@@ -6,12 +6,12 @@
     border-radius: 5px;
   }
 
-  .label {
+  .form label {
     display: block;
     margin-bottom: 5px;
   }
   
-  .input {
+  .form input {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
@@ -25,8 +25,8 @@
   }
   
 
-  .button{
-    background-color: #007bff;
+  .form button{
+    background-color: #e2c42d;
     color: #fff;
     border: none;
     border-radius: 4px;

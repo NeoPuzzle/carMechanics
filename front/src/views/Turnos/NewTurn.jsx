@@ -5,6 +5,7 @@ import axios from "axios";
 import { validateTurn } from "../../helpers/validateTurn";
 import styles from "../../styles/Turn/newTurno.module.css"
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const NewTurn = () => {
 
@@ -20,9 +21,30 @@ const NewTurn = () => {
 
     const navigate = useNavigate();
 
+    // useEffect(() => {
+    //     if(form.date && !isWeekDay(form.date)){
+    //         setErrors({
+    //             ...errors,
+    //             date: ""
+    //         })
+    //     }
+    //     if(form.time && !isValidTime(form.time)){
+    //         setErrors({
+    //             ...errors,
+    //             time: ""
+    //         })
+    //     } else {
+    //         setErrors({
+    //             ...errors,
+    //             user: user.id
+    //         })
+    //     }
+    // }, [form])
+
+
     return (
         <>
-        <div className={styles.form}>
+        <div className={styles.container} >
             <Formik
                 initialValues={form}
                 validate={validateTurn}
@@ -45,7 +67,7 @@ const NewTurn = () => {
                 }}
                 >
                 {({ isValid, isSubmitting }) => (
-                    <Form>
+                    <Form className={styles.form}>
                     <h2>Crea cita nueva</h2>
                         <div>
                             <label>Date:</label>

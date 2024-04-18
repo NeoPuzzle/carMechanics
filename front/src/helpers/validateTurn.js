@@ -27,5 +27,35 @@ export const validateTurn = (input) => {
         errors.user = 'Please enter a user';
     }
 
+    if (!isWeekDay(input.date)) {
+        errors.date = 'La fecha seleccionada debe ser un día laboral (de lunes a viernes)';
+    }
+
+    if (!isValidTime(input.time)) {
+        errors.time = 'La hora seleccionada debe estar entre las 8:00 AM y las 5:00 PM';
+    }
+
+    if (!input.description) {
+        errors.description = 'Por favor ingresa una descripción';
+    }
+
+    if (!input.user) {
+        errors.user = 'Por favor ingresa un usuario';
+    }
+
     return errors;
 };
+
+export const isWeekDay = (dateString) => {
+    const date = new Date(dateString)
+    const dayOfWeek = date.getDay();
+    return dayOfWeek !== 6 && dayOfWeek !== 5;
+}
+
+export const isValidTime = (timeString) => {
+    const [hours, minutes] = timeString.split(":").map(Number)
+    if (hours < 8 || hours > 17 || hours === 17 && minutes > 0) {
+        return false;
+    }
+    return true;
+}

@@ -22,11 +22,11 @@ const Turno = ({id,date, time, description, status}) => {
     
     return(
         <div className={styles.container}>
-            <p className={styles.date}>{date}</p>
-            <p>{time}</p>
-            <p>{description}</p>
-            <p> {status}</p>
-            <button disabled={status == 'CANCELLED'} onClick={handleCancel}>Cancelar</button>
+                <p className={styles.date}>{date}</p>
+                <p>{time}</p>
+                <p>{description}</p>
+                <p> {status}</p>
+                <button disabled={status == 'CANCELLED'} onClick={handleCancel}>Cancelar</button>
         </div>
     );
 }

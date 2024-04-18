@@ -1,9 +1,20 @@
+.container{
+    display: flex;
+    justify-content: center;
+    padding: 5%;
+    width: auto;
+    height: 50vh;
+    background-image: url('https://www.lift-equipmentsinc.com/wp-content/uploads/2017/07/mecanica1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 .form {
-    max-width: 400px;
+    width: 400px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    background-color: #fff;
   }
 
   .form label {
